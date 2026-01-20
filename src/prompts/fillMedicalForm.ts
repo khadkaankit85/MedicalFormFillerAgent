@@ -50,7 +50,7 @@ INSTRUCTIONS:
 6. Call getFormElements to see new fields
 7. Call fillInput with the new fields
 8. Repeat steps 4-7 until you've clicked both toggle buttons, after filling up everything scroll and do the same thing,
-once everything is filled, scroll to the bottom and find hte submit button, click that
+once everything is filled click hte submit button and thats it
 9. Call click on submitButton.selector
 
 YOU MUST EXECUTE ALL STEPS keeping the api calls minimal. After each tool call, explain what you're doing next.
