@@ -1,3 +1,4 @@
+import "dotenv-defaults/config";
 import { chromium } from 'playwright';
 import { generateText } from 'ai';
 import { createNavigateTool } from '../tools/navigate';
