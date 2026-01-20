@@ -1,7 +1,7 @@
-import cron from 'node-cron';
-import { runWorkflow } from './workflow';
+import cron from "node-cron";
+import { runWorkflow } from "./workflow";
 
-const task = cron.schedule('*/5 * * * *', async () => {
+const task = cron.schedule("*/5 * * * *", async () => {
   console.log(`[${new Date().toISOString()}] Running scheduled workflow...`);
 
   try {
@@ -12,9 +12,9 @@ const task = cron.schedule('*/5 * * * *', async () => {
   }
 });
 
-console.log('Scheduler started - runs every 5 minutes');
+console.log("Scheduler started - runs every 5 minutes");
 
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
   task.stop();
   process.exit(0);
 });
