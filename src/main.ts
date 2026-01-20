@@ -2,7 +2,7 @@ import { generateText } from "ai";
 import { model } from "./_internal/setup";
 import { createSession } from "./session";
 import { createTools } from "./tools";
-import { formAutomationPrompt } from "./prompts/fillMedicalForm";
+import { getPrompt } from "./prompts/fillMedicalForm";
 
 export async function main() {
   const page = await createSession("https://www.google.com");
@@ -12,7 +12,7 @@ export async function main() {
     model,
     tools,
     maxSteps: 20,
-    prompt: formAutomationPrompt,
+    prompt: getPrompt(),
     onStepFinish: ({ toolResults }) => {
       if (toolResults) {
         toolResults.forEach(result => {
