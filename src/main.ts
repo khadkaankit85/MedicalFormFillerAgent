@@ -11,7 +11,7 @@ export async function main() {
   const response = await generateText({
     model,
     tools,
-    maxSteps: 20, // Increased from 10
+    maxSteps: 20,
     prompt: formAutomationPrompt,
     onStepFinish: ({ toolResults }) => {
       if (toolResults) {

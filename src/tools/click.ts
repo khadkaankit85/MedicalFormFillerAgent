@@ -9,9 +9,24 @@ export const createClickTool = (page: Page) => {
       selector: z.string().describe('CSS selector for the element to click'),
     }),
     execute: async ({ selector }) => {
-      await page.click(selector);
-      await page.waitForTimeout(800);
-      return `Clicked ${selector}`;
+      try {
+        console.log(`Attempting to click: ${selector}`);
+
+        await page.waitForSelector(selector, {
+          state: 'visible',
+          timeout: 5000
+        });
+
+        await page.click(selector, { timeout: 5000 });
+        await page.waitForTimeout(1200);
+
+        console.log(`Successfully clicked: ${selector}`);
+        return `Clicked ${selector}`;
+
+      } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        return `ERROR: Failed to click ${selector} - ${errorMsg}`;
+      }
     },
   })
 }

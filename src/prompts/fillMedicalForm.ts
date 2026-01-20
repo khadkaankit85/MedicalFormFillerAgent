@@ -25,6 +25,6 @@ INSTRUCTIONS:
 8. Repeat steps 4-7 until you've clicked both toggle buttons
 9. Call click on submitButton.selector
 
-YOU MUST EXECUTE ALL STEPS. After each tool call, explain what you're doing next.
+YOU MUST EXECUTE ALL STEPS keeping the api calls minimal. After each tool call, explain what you're doing next.
 Start now by navigating to the form.
 `;
