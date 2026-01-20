@@ -48,12 +48,11 @@ export const createGetFormElementsTool = (page: Page) => {
           .map(btn => {
             const text = btn.textContent?.trim() || '';
             return {
-              selector: `button:has-text("${text}")`,
+              selector: `xpath=//button[contains(., "${text}")]`,
               text: text,
               buttonType: btn.getAttribute('type') || 'button'
             };
           });
-
         return { fields, buttons };
       });
 

@@ -12,19 +12,25 @@ export const createClickTool = (page: Page) => {
       try {
         console.log(`Attempting to click: ${selector}`);
 
-        await page.waitForSelector(selector, {
-          state: 'visible',
-          timeout: 5000
-        });
+        if (selector.startsWith('xpath=')) {
+          const xpath = selector.replace('xpath=', '');
+          await page.locator(`xpath=${xpath}`).click({ timeout: 5000 });
+        } else {
+          await page.waitForSelector(selector, {
+            state: 'visible',
+            timeout: 5000
+          });
+          await page.click(selector, { timeout: 5000 });
+        }
 
-        await page.click(selector, { timeout: 5000 });
-        await page.waitForTimeout(800);
+        await page.waitForTimeout(1200);
 
         console.log(`Successfully clicked: ${selector}`);
         return `Clicked ${selector}`;
 
       } catch (error) {
         const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error(`Failed to click ${selector}:`, errorMsg);
         return `ERROR: Failed to click ${selector} - ${errorMsg}`;
       }
     },

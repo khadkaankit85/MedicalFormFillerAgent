@@ -4,7 +4,7 @@ import type { Page } from 'playwright'
 
 export const createScrollTool = (page: Page) => {
   return tool({
-    description: 'Scroll the page or scroll to a specific element',
+    description: 'Scroll the page or scroll to a specific element, can be used to scroll after each section is filled so that we reach the end of the page at the end and find a submit button',
     parameters: z.object({
       selector: z.string().optional().describe('CSS selector of element to scroll to. If not provided, scrolls the page down'),
       direction: z.enum(['up', 'down']).optional().describe('Direction to scroll if no selector provided'),
