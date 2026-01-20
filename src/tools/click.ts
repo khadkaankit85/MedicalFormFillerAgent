@@ -18,7 +18,7 @@ export const createClickTool = (page: Page) => {
         });
 
         await page.click(selector, { timeout: 5000 });
-        await page.waitForTimeout(1200);
+        await page.waitForTimeout(800);
 
         console.log(`Successfully clicked: ${selector}`);
         return `Clicked ${selector}`;
